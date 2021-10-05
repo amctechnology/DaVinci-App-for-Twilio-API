@@ -1,0 +1,14 @@
+<div *ngIf='isChrome && !chromeUserHasntEnabledAudio' id="promptUserForSoundDiv" class="promptUserForSoundDiv" >
+  <label id="promptLabelID" class="promptLabelID">
+    <b id="SoundNotifText" class="SoundNotifText">Sound Notifications</b>
+    <button id="YesButton" class="YesButton" (click)="userSelectedYesSoundNotifications()">Allow</button>
+  </label>
+</div>
+<ng-container *ngFor="let scenario$ of scenarios">
+  <ng-container *ngIf="scenario$ | async; let scenario">
+    <amc-scenario
+      [scenario]="scenario"
+      (newMessage)="newMessage($event, scenario)"
+    ></amc-scenario>
+  </ng-container>
+</ng-container>
